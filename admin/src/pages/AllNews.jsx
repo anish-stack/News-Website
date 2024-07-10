@@ -30,7 +30,7 @@ const AllNews = () => {
 
     const fetchNews = async () => {
         try {
-            const response = await axios.get('http://localhost:7000/api/news');
+            const response = await axios.get('https://news-website-xaut.onrender.com/api/news');
             setNews(response.data);
             setFilteredNews(response.data); // Initialize filteredNews with all news
         } catch (error) {
@@ -40,7 +40,7 @@ const AllNews = () => {
 
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`http://localhost:7000/api/news/${id}`);
+            await axios.delete(`https://news-website-xaut.onrender.com/api/news/${id}`);
             // Update news state after deletion
             toast.success('News Delete Successful')
             const updatedNews = news.filter(item => item._id !== id);

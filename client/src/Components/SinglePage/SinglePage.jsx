@@ -13,7 +13,7 @@ const SinglePage = () => {
 
     const fetchNews = async () => {
         try {
-            const response = await axios.get(`http://localhost:7000/api/news/category/${query}`);
+            const response = await axios.get(`https://news-website-xaut.onrender.com/api/news/category/${query}`);
             setNews(response.data);
             setIsLoaded(true);
         } catch (error) {
