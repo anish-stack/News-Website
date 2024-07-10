@@ -1,0 +1,87 @@
+.NewsPage-section{
+    width: 100%;
+    background-color: #EDEFF4;
+}
+
+.NewsPage-section .NewsPage-container{
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 40px 120px;
+    
+}
+
+.NewsPage-section .NewsPage-container .content{
+    background-color: white;
+
+    display: flex;
+    flex-direction: column;
+    /* gap: 10px; */
+    border: 1px solid rgb(183, 183, 183);
+}
+
+.NewsPage-section .NewsPage-container .content .img{
+    width: 100%;
+    height: 400px;
+}
+
+.NewsPage-section .NewsPage-container .content .img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.NewsPage-section .NewsPage-container .content .main-data{
+    display: flex;
+    flex-direction: column;
+    /* gap: 10px; */
+    padding: 0px;
+}
+
+.NewsPage-section .NewsPage-container .content .cate-date{
+    background-color: white;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid rgb(221, 221, 221);
+    padding: 10px;
+}
+
+.NewsPage-section .NewsPage-container .content .cate-date .cate{
+    font-size: 14px;
+    font-weight: 500;
+    color: black;
+    text-transform: uppercase;
+    background: #FF6F61;
+    padding: 5px 10px;
+}
+
+.NewsPage-section .NewsPage-container .content .cate-date .date{
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.NewsPage-section .NewsPage-container .content .title{
+    font-size: 24px;
+    font-weight: 600;
+    padding: 10px;
+    border-bottom: 1px solid rgb(221, 221, 221);
+    margin: 0;
+}
+
+.NewsPage-section .NewsPage-container .content .para{
+    font-size: 16px;
+    padding: 10px;
+    border-bottom: 1px solid rgb(221, 221, 221);
+    margin: 0;
+}
+
+.NewsPage-section .NewsPage-container .content .auth{
+    padding: 10px;
+}
+
+.NewsPage-section .NewsPage-container .content .auth .auth-name{
+    font-size: 15px;
+    font: 400;
+    color: rgb(129, 129, 129);
+    margin: 0;
+}

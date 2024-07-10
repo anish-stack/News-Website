@@ -1,0 +1,25 @@
+/* CreateNews.css */
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    background-color: #f8f9fa; /* Light background color */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow for box effect */
+  }
+  
+  .form-label {
+    font-weight: bold;
+  }
+  
+  .btn-primary {
+    background-color: #EC0B43; /* Button background color */
+    border-color: #EC0B43; /* Button border color */
+  }
+  
+  .btn-primary:hover {
+    background-color: #58355E; /* Button hover background color */
+    border-color: #58355E; /* Button hover border color */
+  }
+  
