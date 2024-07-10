@@ -84,7 +84,7 @@ const AllNews = () => {
         window.location.href = `/See-News?News=${News_id}`
     };
     return (
-        <div className="container mt-5">
+        <div className="w-100 mt-5">
             <h2 className="mb-4">All News</h2>
             <div className="mb-3">
                 <select className="form-select" onChange={handleCategoryFilter} value={categoryFilter}>
@@ -94,7 +94,7 @@ const AllNews = () => {
                     ))}
                 </select>
             </div>
-            <table className="table">
+            <table className="table w-100 table-hover">
                 <thead>
                     <tr>
                         <th>Headline</th>

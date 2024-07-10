@@ -59,7 +59,7 @@ const TopNews = () => {
                 {News && News.map((item, index) => (
                    <SwiperSlide onClick={() => window.location.href = `news-page/${item.headline}/${item._id}`} key={index} className='tranding-main-box'>
                    <div className="img">
-                       <img loading='lazy' src={item.NewsHeadImage} alt={item.headline} />
+                       <img loading='lazy' onError={(e)=>e.target.src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8bUqIUkfyesCXuAFw-MFLebEI-5to1ouplw&s"} src={item.NewsHeadImage} alt={item.headline} />
                    </div>
                    <div className="content">
                        <div className="cate-date">

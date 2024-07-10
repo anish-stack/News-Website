@@ -55,7 +55,7 @@ function NewsPage() {
                 <div className="news-content">
 
                     <div className="imgs">
-                        <img className="w-100" loading='lazy' src={news.NewsHeadImage} alt={news.headline} />
+                        <img className="w-100" loading='lazy' onError={(e)=>e.target.src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8bUqIUkfyesCXuAFw-MFLebEI-5to1ouplw&s"} src={news.NewsHeadImage} alt={news.headline} />
                     </div>
                     <div className="main-data">
 
