@@ -58,7 +58,7 @@ const SinglePage = () => {
                             </div>
                         ) : (
                             displayedNews.map((item, index) => (
-                                <div className="col-12 col-sm-6 col-md-4 mb-4" key={index}>
+                                <a href={`/news-page/${item.headline}/${item._id}`} className="col-12 col-sm-6 col-md-4 mb-4" key={index}>
                                     <div className="category-col-img">
                                         <img loading='lazy' src={item.NewsHeadImage} alt={item.headline} className="img-fluid" />
                                     </div>
@@ -72,7 +72,7 @@ const SinglePage = () => {
                                     <div className="auth">
                                         <p className='auth-name'>Covered By: {item.storyCoveredBy}</p>
                                     </div>
-                                </div>
+                                </a>
                             ))
                         )}
                     </div>
