@@ -32,6 +32,9 @@ const NewsSchema = new mongoose.Schema(
       required: true,
       trim: true
     },
+    NewsHeadImage:{
+      type: String
+    },
     ShowAtSlider:{
       type: Boolean,
       default:false

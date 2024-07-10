@@ -9,6 +9,7 @@ body {
 }
 
 a {
+    text-decoration: none!important;
     color: #FF6F61;
     transition: 0.5s;
 }

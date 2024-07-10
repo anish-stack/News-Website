@@ -8,6 +8,7 @@ import Header from './Components/Header/Header'
 import Footer from './Components/Footer/Footer'
 import SinglePage from './Components/SinglePage/SinglePage'
 import NewsPage from './Components/NewsPage/NewsPage'
+import ContactForm from './Components/Contact/Contact'
 
 function App() {
 
@@ -17,7 +18,10 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/single-page' element={<SinglePage />} />
-        <Route path='/news-page' element={<NewsPage />} />
+        <Route path='/Contact' element={<ContactForm />} />
+
+        <Route path='/news-page/:headline/:id' element={<NewsPage />} />
+        
         
       </Routes>
       <Footer />

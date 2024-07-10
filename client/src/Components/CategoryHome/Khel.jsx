@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-const CategoryHome = () => {
+const Khel = () => {
     const [news, setNews] = useState([]);
     const [showAll, setShowAll] = useState(false);
 
@@ -11,7 +11,7 @@ const CategoryHome = () => {
             const response = await axios.get('http://localhost:7000/api/news');
             const data = response.data;
             // console.log(data)
-            const filterSlideData = data.filter((item) => item.newsCategory === "भ्रष्टाचार");
+            const filterSlideData = data.filter((item) => item.newsCategory === "खेल");
             setNews(filterSlideData);
         } catch (error) {
             console.error('Error fetching news:', error);
@@ -28,7 +28,7 @@ const CategoryHome = () => {
         <section className='CategoryHome-section'>
             <div className="CategoryHome-container">
                 <div className="CategoryHome-heading">
-                    <h3>भ्रष्टाचार</h3>
+                    <h3>खेल</h3>
                 </div>
                 <div className="row">
                     {displayedNews.map((item, index) => (
@@ -61,4 +61,4 @@ const CategoryHome = () => {
     );
 };
 
-export default CategoryHome;
+export default Khel;

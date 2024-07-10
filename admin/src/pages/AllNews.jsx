@@ -47,7 +47,7 @@ const AllNews = () => {
             setNews(updatedNews);
             setFilteredNews(updatedNews); // Update filtered news as well
         } catch (error) {
-          toast.error('Error In  Delete News')
+            toast.error('Error In  Delete News')
 
             console.error('Error deleting news:', error);
         }
@@ -65,7 +65,7 @@ const AllNews = () => {
         if (categoryFilter) {
             filtered = news.filter(item => item.newsCategory === categoryFilter);
         }
-        
+
         // Update filteredNews with filtered data
         setFilteredNews(filtered);
     }, [news, categoryFilter]); // Depend on news and categoryFilter
@@ -81,8 +81,8 @@ const AllNews = () => {
         setCurrentPage(pageNumber);
     };
     const SeeNews = (News_id) => {
-      window.location.href=`/See-News?News=${News_id}`
-  };
+        window.location.href = `/See-News?News=${News_id}`
+    };
     return (
         <div className="container mt-5">
             <h2 className="mb-4">All News</h2>
@@ -100,6 +100,7 @@ const AllNews = () => {
                         <th>Headline</th>
                         <th>Category</th>
                         <th>Covered By</th>
+                        <th>News image</th>
                         <th>Created At</th>
                         <th>Updated At</th>
                         <th>Actions</th>
@@ -111,10 +112,15 @@ const AllNews = () => {
                             <td>{item.headline}</td>
                             <td>{item.newsCategory}</td>
                             <td>{item.storyCoveredBy}</td>
+                            <td className='col-md-3'>
+                          
+
+                                    <img loading='lazy' src={item.NewsHeadImage} className='img-thumbnail' style={{height:60}} alt={item.headline} /></td>
+
                             <td>{new Date(item.createdAt).toLocaleString()}</td>
                             <td>{new Date(item.updatedAt).toLocaleString()}</td>
                             <td>
-                            <button className="btn btn-success me-2" onClick={()=>SeeNews(item._id)}  >View News</button>
+                                <button className="btn btn-success me-2" onClick={() => SeeNews(item._id)}  >View News</button>
                                 <button className="btn btn-primary me-2">Edit</button>
                                 <button className="btn btn-danger" onClick={() => handleDelete(item._id)}>Delete</button>
                             </td>

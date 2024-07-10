@@ -24,6 +24,7 @@ const CreateNews = () => {
   const [headline, setHeadline] = useState('');
   const [storyCoveredBy, setStoryCoveredBy] = useState('');
   const [images, setImages] = useState([]);
+  const [NewsHeadImage,setNewsHeadImage] = useState('')
   const [newsCategory, setNewsCategory] = useState('');
   const [whichRelatedNewsShow, setWhichRelatedNewsShow] = useState('');
   const [newsHtmlData, setNewsHtmlData] = useState('');
@@ -47,6 +48,7 @@ const CreateNews = () => {
     formData.append('newsCategory', newsCategory);
     formData.append('whichRelatedNewsShow', whichRelatedNewsShow);
     formData.append('newsHtmlData', newsHtmlData);
+    formData.append('NewsHeadImage', NewsHeadImage);
 
     try {
       const response = await axios.post('http://localhost:7000/api/news/create-news', formData, {
@@ -87,6 +89,10 @@ const CreateNews = () => {
                 <option key={category.id} value={category.name}>{category.name}</option>
               ))}
             </select>
+          </div>
+          <div className="mb-3 col-md-6">
+            <label htmlFor="storyCoveredBy" className="form-label">Image Link</label>
+            <input type="text" className="form-control" id="NewsHeadImage" value={NewsHeadImage} onChange={(e) => setNewsHeadImage(e.target.value)} required />
           </div>
     
         </div>

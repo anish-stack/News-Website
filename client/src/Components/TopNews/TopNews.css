@@ -8,8 +8,10 @@
 .tranding-main-box{
     /* height: 400px; */
     display: flex;
+    cursor: pointer;
     flex-direction: column;
     /* align-items: center;
+    c
     justify-content: center; */
     /* border: 1px solid black; */
 

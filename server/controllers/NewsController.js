@@ -3,6 +3,7 @@ const NodeCache = require('node-cache');
 const cache = new NodeCache({ stdTTL: 600 }); // Cache TTL of 10 minutes
 const cloudinary = require('cloudinary').v2
 const streamifier = require('streamifier');
+const { param, validationResult } = require('express-validator');
 // Configuration
 cloudinary.config({
     cloud_name: 'dmisqrobm',
@@ -125,18 +126,35 @@ exports.getOnlyLatestNews = async (req, res) => {
 };
 
 // Get news by category
+exports.validateCategory = [
+    param('category')
+        .trim()
+        .notEmpty()
+        .withMessage('Category is required')
+        .isString()
+        .withMessage('Category must be a string'),
+];
 exports.getNewsByCategory = async (req, res) => {
+    // Check for validation errors
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+
     try {
         const category = req.params.category;
-        const cacheKey = `newsCategory_${category}`;
-        const cachedNews = cache.get(cacheKey);
-        if (cachedNews) return res.status(200).json(cachedNews);
 
+        // Fetch news by category
         const news = await News.find({ newsCategory: category });
-        cache.set(cacheKey, news); // Cache the result
+
+        // If no news found, return a 404 error
+        if (!news.length) {
+            return res.status(404).json({ message: 'No news found for this category' });
+        }
+
         res.status(200).json(news);
     } catch (error) {
-        res.status(400).json({ error: error.message });
+        res.status(500).json({ error: 'Server error: ' + error.message });
     }
 };
 
@@ -200,10 +218,7 @@ exports.MakeNewsShowAtLatest = async (req, res) => {
     const { id } = req.params;
 
     try {
-        // Deactivate all other news for ShowAtLatestNews
-        await News.updateMany({}, { $set: { ShowAtLatestNews: false } });
-
-        // Activate the selected news
+        // Activate the selected news without deactivating others
         const updatedNews = await News.findByIdAndUpdate(id, { ShowAtLatestNews: true }, { new: true });
 
         res.status(200).json(updatedNews);
@@ -211,16 +226,40 @@ exports.MakeNewsShowAtLatest = async (req, res) => {
         console.error('Error marking news as ShowAtLatestNews:', error);
         res.status(500).json({ message: 'Server error' });
     }
-}
+};
+exports.DeactivateNewsShowAtLatest = async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        // Deactivate the specified news item
+        const updatedNews = await News.findByIdAndUpdate(id, { ShowAtLatestNews: false }, { new: true });
+
+        res.status(200).json(updatedNews);
+    } catch (error) {
+        console.error('Error deactivating news from ShowAtLatestNews:', error);
+        res.status(500).json({ message: 'Server error' });
+    }
+};
+
+exports.DeactivateNewsShowSlider = async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        // Deactivate the specified news item
+        const updatedNews = await News.findByIdAndUpdate(id, { ShowAtSlider: false }, { new: true });
+
+        res.status(200).json(updatedNews);
+    } catch (error) {
+        console.error('Error deactivating news from ShowAtSlider:', error);
+        res.status(500).json({ message: 'Server error' });
+    }
+};
 
 exports.MakeNewsShowSlider = async (req, res) => {
     const { id } = req.params;
 
     try {
-        // Deactivate all other news for ShowAtSlider
-        await News.updateMany({}, { $set: { ShowAtSlider: false } });
-
-        // Activate the selected news
+        // Activate the selected news without deactivating others
         const updatedNews = await News.findByIdAndUpdate(id, { ShowAtSlider: true }, { new: true });
 
         res.status(200).json(updatedNews);
@@ -228,4 +267,28 @@ exports.MakeNewsShowSlider = async (req, res) => {
         console.error('Error marking news as ShowAtSlider:', error);
         res.status(500).json({ message: 'Server error' });
     }
-}
+};
+
+
+exports.addImageFieldInAllNews = async (req, res) => {
+    try {
+        const imageUrl = 'https://media.istockphoto.com/id/1369150014/vector/breaking-news-with-world-map-background-vector.jpg?s=612x612&w=0&k=20&c=9pR2-nDBhb7cOvvZU_VdgkMmPJXrBQ4rB1AkTXxRIKM=';
+
+        // Find all news items
+        const allNews = await News.find();
+
+        // Iterate over each news item and update with the new image URL
+        const updatePromises = allNews.map(newsItem => {
+            newsItem.NewsHeadImage = imageUrl;
+            return newsItem.save(); // Save each updated news item
+        });
+
+        // Wait for all update operations to complete
+        await Promise.all(updatePromises);
+
+        res.status(200).json({ message: 'News items updated successfully' });
+    } catch (error) {
+        console.error('Error updating news items:', error);
+        res.status(500).json({ message: 'Server error' });
+    }
+};

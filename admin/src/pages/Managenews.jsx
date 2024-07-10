@@ -4,7 +4,7 @@ import axios from 'axios';
 const ManageNews = () => {
     const [news, setNews] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [itemsPerPage] = useState(5); // Number of news items per page
+    const [itemsPerPage] = useState(12); // Number of news items per page
 
     // Fetch all news on component mount
     useEffect(() => {
@@ -24,14 +24,18 @@ const ManageNews = () => {
     // Function to handle activation/deactivation for ShowAtLatestNews
     const handleShowAtLatestNews = async (id, currentStatus) => {
         try {
+            let response;
             // Toggle the current status
-            const newStatus = !currentStatus;
-            await axios.put(`http://localhost:7000/api/news/latest-update/${id}`, { ShowAtLatestNews: newStatus });
+            if (currentStatus) {
+                response = await axios.put(`http://localhost:7000/api/news/latest-deactivate/${id}`);
+            } else {
+                response = await axios.put(`http://localhost:7000/api/news/latest-update/${id}`, { ShowAtLatestNews: true });
+            }
 
             // Update the news state with the updated status
             const updatedNews = news.map(item => {
                 if (item._id === id) {
-                    return { ...item, ShowAtLatestNews: newStatus };
+                    return { ...item, ShowAtLatestNews: !currentStatus };
                 }
                 return item;
             });
@@ -44,14 +48,18 @@ const ManageNews = () => {
     // Function to handle activation/deactivation for ShowAtSlider
     const handleShowAtSlider = async (id, currentStatus) => {
         try {
+            let response;
             // Toggle the current status
-            const newStatus = !currentStatus;
-            await axios.put(`http://localhost:7000/api/news/slider-update/${id}`, { ShowAtSlider: newStatus });
+            if (currentStatus) {
+                response = await axios.put(`http://localhost:7000/api/news/slider-deactivate/${id}`);
+            } else {
+                response = await axios.put(`http://localhost:7000/api/news/slider-update/${id}`, { ShowAtSlider: true });
+            }
 
             // Update the news state with the updated status
             const updatedNews = news.map(item => {
                 if (item._id === id) {
-                    return { ...item, ShowAtSlider: newStatus };
+                    return { ...item, ShowAtSlider: !currentStatus };
                 }
                 return item;
             });

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import './LatestNewsCategory.css'; // Custom CSS
 
-const CategoryHome = () => {
+const LatestNewsCategory = () => {
     const [news, setNews] = useState([]);
     const [showAll, setShowAll] = useState(false);
 
@@ -10,8 +11,7 @@ const CategoryHome = () => {
         try {
             const response = await axios.get('http://localhost:7000/api/news');
             const data = response.data;
-            // console.log(data)
-            const filterSlideData = data.filter((item) => item.newsCategory === "भ्रष्टाचार");
+            const filterSlideData = data.filter((item) => item.ShowAtLatestNews === true);
             setNews(filterSlideData);
         } catch (error) {
             console.error('Error fetching news:', error);
@@ -28,7 +28,7 @@ const CategoryHome = () => {
         <section className='CategoryHome-section'>
             <div className="CategoryHome-container">
                 <div className="CategoryHome-heading">
-                    <h3>भ्रष्टाचार</h3>
+                    <h3>Latest News</h3>
                 </div>
                 <div className="row">
                     {displayedNews.map((item, index) => (
@@ -55,10 +55,10 @@ const CategoryHome = () => {
                             {showAll ? 'View Less' : 'View More'}
                         </button>
                     </div>
-                )}
+        )}
             </div>
         </section>
     );
 };
 
-export default CategoryHome;
+export default LatestNewsCategory;

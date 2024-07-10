@@ -1,47 +1,74 @@
-import React from 'react'
-import './NewsPage.css'
+import React, { useEffect, useState, useCallback } from 'react';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
+import './NewsPage.css'; // Assuming you have a NewsPage.css for styling
+import Loader from '../Loader/Loader'; // Assuming you have a Loader component
 
 function NewsPage() {
-    const data = {
-        categoryName: 'Sports',
-        title: `The world's largest cryptocurrency exchange Binance is launching a new token`,
-        date: 'Jan 15, 2024',
-        img: 'https://themewagon.github.io/biznews/img/news-700x435-1.jpg',
-        writerName: 'Jon',
-        paragraph: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex iusto soluta dolorem expedita illo quas, quo nam, tempora exercitationem, aliquid quod? Quam nesciunt saepe explicabo cupiditate at accusantium a! Nisi ratione harum culpa, sequi enim repellendus, nostrum molestiae qui obcaecati, suscipit omnis iusto dolor veritatis aliquid nam voluptates? Exercitationem quos earum labore, doloremque dolorem ipsa a qui? Rerum iure illo et enim culpa delectus ad earum ut. Aliquam molestiae dolorum pariatur saepe explicabo eaque atque totam similique, porro ipsa. Omnis aperiam repellat nesciunt, aliquam voluptates eos voluptas adipisci. Placeat, voluptatum asperiores eum unde fuga consequuntur id. Minima unde accusantium incidunt!'
+    const { id } = useParams();
+    const [news, setNews] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
+
+    const fetchNews = useCallback(async () => {
+        try {
+            const response = await axios.get(`http://localhost:7000/api/news/${id}`);
+            setNews(response.data);
+        } catch (error) {
+            console.error('Error fetching news:', error);
+        } finally {
+            setIsLoading(false);
+        }
+    }, [id]);
+
+    useEffect(() => {
+        fetchNews();
+    }, [fetchNews]);
+
+    if (isLoading) {
+        return <div className='loaders'>
+             <Loader />
+        </div>;
     }
+
+    if (!news) {
+        return (
+            <section className='NewsPage-section'>
+                <div className="NewsPage-container">
+                    <div className="content">
+                        <p>No news found for this ID.</p>
+                    </div>
+                </div>
+            </section>
+        );
+    }
+
     return (
         <section className='NewsPage-section'>
-            <div className="NewsPage-container">
-                <div className="content">
-                    <div className="img">
-                        <img src={data.img} alt="" />
+            <div className="container">
+                <div className="cate-date">
+                    <span className='cate'>{news.newsCategory}</span>
+                    <span className='date'>{new Date(news.createdAt).toLocaleString()}</span>
+                </div>
+                <div className="auth">
+                    <p className='auth-name text-primary underline'>Covered By: {news.storyCoveredBy}</p>
+                </div>
+                <div className="news-content">
+
+                    <div className="imgs">
+                        <img className="w-100" loading='lazy' src={news.NewsHeadImage} alt={news.headline} />
                     </div>
                     <div className="main-data">
-                        <div className="cate-date">
-                            <span className='cate'>
-                                {
-                                    data.categoryName
-                                }
-                            </span>
-                            <span className='date'>
-                                {
-                                    data.date
-                                }
-                            </span>
-                        </div>
-                        <h1 className='title'>{data.title}</h1>
-                        <p className='para'>{data.paragraph}</p>
-                    </div>
-                    <div className="auth">
-                        <p className='auth-name'>
-                            {data.writerName}
-                        </p>
+
+                        <h1 className='title'>{news.headline}</h1>
+                        <div className="news-content" dangerouslySetInnerHTML={{ __html: news.newsHtmlData }} />
+
                     </div>
                 </div>
             </div>
+
+            {/* Realated News */}
         </section>
-    )
+    );
 }
 
-export default NewsPage
+export default NewsPage;
