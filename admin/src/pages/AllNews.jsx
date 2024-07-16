@@ -30,9 +30,9 @@ const AllNews = () => {
 
     const fetchNews = async () => {
         try {
-            const response = await axios.get('https://news-website-xaut.onrender.com/api/news');
+            const response = await axios.get('http://localhost:7000/api/news');
             setNews(response.data);
-            setFilteredNews(response.data); // Initialize filteredNews with all news
+            setFilteredNews(response.data.reverse()); // Initialize filteredNews with all news
         } catch (error) {
             console.error('Error fetching news:', error);
         }
@@ -40,7 +40,7 @@ const AllNews = () => {
 
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`https://news-website-xaut.onrender.com/api/news/${id}`);
+            await axios.delete(`http://localhost:7000/api/news/${id}`);
             // Update news state after deletion
             toast.success('News Delete Successful')
             const updatedNews = news.filter(item => item._id !== id);
@@ -113,9 +113,9 @@ const AllNews = () => {
                             <td>{item.newsCategory}</td>
                             <td>{item.storyCoveredBy}</td>
                             <td className='col-md-3'>
-                          
 
-                                    <img loading='lazy' src={item.NewsHeadImage} className='img-thumbnail' style={{height:60}} alt={item.headline} /></td>
+
+                                <img loading='lazy' src={item.NewsHeadImage} className='img-thumbnail' style={{ height: 60 }} alt={item.headline} /></td>
 
                             <td>{new Date(item.createdAt).toLocaleString()}</td>
                             <td>{new Date(item.updatedAt).toLocaleString()}</td>

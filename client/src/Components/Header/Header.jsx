@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import logo from './Aam awaz logo 1.png'
 const Header = () => {
 
   const generateLink = (category) => {
@@ -14,8 +14,9 @@ const Header = () => {
           <div className="row">
             <div className="col-md-6">
               <div className="tb-contact">
-                <p><i className="fas fa-envelope"></i>info@mail.com</p>
-                <p><i className="fas fa-phone-alt"></i>+012 345 6789</p>
+                <p><i className="fas fa-envelope"></i>
+                info@aamawaz.com </p>
+                <p><i className="fas fa-phone-alt"></i>9910150906</p>
               </div>
             </div>
             <div className="col-md-6">
@@ -38,8 +39,8 @@ const Header = () => {
             <div className="col-lg-3 col-md-4">
               <div className="b-logo">
                 <a href="/">
-                  {/* <img src={logo} alt="Logo" /> */}
-                  <h1 className='text-black fw-bold'>आम <span className='text-danger fw-bold'>आवाज़</span></h1>
+                  <img src={logo} alt="Logo" />
+                  {/* <h1 className='text-black fw-bold'>आम <span className='text-danger fw-bold'>आवाज़</span></h1> */}
                 </a>
               </div>
             </div>
@@ -77,7 +78,7 @@ const Header = () => {
                 <a href={generateLink('तकनिकी')} className="nav-item nav-link">तकनिकी</a>
                 <a href={generateLink('व्यापर')} className="nav-item nav-link">व्यापर</a>
                 <a href={generateLink('भ्रष्टाचार')} className="nav-item nav-link">भ्रष्टाचार</a>
-                <a href={generateLink('सच का आईना')} className="nav-item nav-link">सच का आईना</a>
+                <a href={generateLink('दिल्ली-एनसीआर')} className="nav-item nav-link">दिल्ली/एनसीआर</a>
                 <a href={generateLink('वीडियो')} className="nav-item nav-link">वीडियो</a>
             </div>
         </div>
