@@ -35,7 +35,7 @@ const Footer = () => {
                                 <h3 className="title">Useful Links</h3>
                                 <ul className=''>
                                     <li>
-                                        <a href={generateLink('घर')} className='text-white'>घर</a>
+                                        <a href={generateLink('घर')} className='text-white'>होम</a>
                                     </li>
                                     <li>
                                         <a href={generateLink('देश')} className='text-white'>देश</a>
