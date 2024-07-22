@@ -15,7 +15,7 @@ const Footer = () => {
                             <div className="footer-widget">
                                 <h3 className="title">Get in Touch</h3>
                                 <div className="contact-info">
-                                    <p><i className="fa fa-map-marker"></i>123 News Street, NY, USA</p>
+                                    <p><i className="fa fa-map-marker"></i>S.R.Nagar, Delhi</p>
                                     <p><i className="fa fa-envelope"></i>
                                         info@aamawaz.com</p>
                                     <p><i className="fa fa-phone"></i>9910150906</p>
@@ -117,7 +117,7 @@ const Footer = () => {
                 <div className="container">
                     <div className="row">
                         <div className="col-md-6 copyright">
-                            <p>Copyright &copy; <a href="">AAM AWWAJ</a>. All Rights Reserved</p>
+                            <p>Copyright &copy; <a href="">AAM AWAZ</a>. All Rights Reserved</p>
                         </div>
 
                         <div className="col-md-6 template-by">
