@@ -11,8 +11,9 @@ function NewsPage() {
 
     const fetchNews = useCallback(async () => {
         try {
-            const response = await axios.get(`https://news-website-xaut.onrender.com/api/news/${id}`);
+            const response = await axios.get(`https://news-website-rslv.onrender.com/api/news/${id}`);
             setNews(response.data);
+            console.log(response.data)
         } catch (error) {
             console.error('Error fetching news:', error);
         } finally {

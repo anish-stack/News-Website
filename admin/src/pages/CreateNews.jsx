@@ -16,7 +16,7 @@ const CreateNews = () => {
     { id: 9, name: 'तकनीकी' },
     { id: 10, name: 'व्यापार' },
     { id: 11, name: 'भ्रष्टाचार' },
-    { id: 12, name: 'सच का आईना' },
+    { id: 12, name: 'दिल्ली-एनसीआर' },
     { id: 13, name: 'वीडियो' }
     // Add more categories as needed
   ];
@@ -51,7 +51,7 @@ const CreateNews = () => {
     formData.append('NewsHeadImage', NewsHeadImage);
 
     try {
-      const response = await axios.post('https://news-website-xaut.onrender.com/api/news/create-news', formData, {
+      const response = await axios.post('https://news-website-rslv.onrender.com/api/news/create-news', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
@@ -59,6 +59,7 @@ const CreateNews = () => {
       
       console.log('News created:', response.data);
       // Optionally redirect or show success message
+      window.location.href="/all-news"
     } catch (error) {
       console.error('Error creating news:', error);
       // Handle error, show error message

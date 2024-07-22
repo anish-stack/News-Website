@@ -28,7 +28,7 @@ const uploadImage = (buffer) => {
 // Create news
 exports.createNews = async (req, res) => {
     try {
-      const { headline, storyCoveredBy, newsCategory, whichRelatedNewsShow, newsHtmlData } = req.body;
+      const { headline, storyCoveredBy, newsCategory, whichRelatedNewsShow, newsHtmlData,NewsHeadImage } = req.body;
     //   const files = req.files;
     //     console.log(files)
     //   if (!files || files.length === 0) {
@@ -51,6 +51,7 @@ exports.createNews = async (req, res) => {
         storyCoveredBy,
         newsCategory,
         newsHtmlData,
+        NewsHeadImage
      
       });
   

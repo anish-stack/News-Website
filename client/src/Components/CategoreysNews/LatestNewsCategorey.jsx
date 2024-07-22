@@ -9,7 +9,7 @@ const LatestNewsCategory = () => {
 
     const fetchNews = async () => {
         try {
-            const response = await axios.get('https://news-website-xaut.onrender.com/api/news');
+            const response = await axios.get('https://news-website-rslv.onrender.com/api/news');
             const data = response.data;
             const filterSlideData = data.filter((item) => item.ShowAtLatestNews === true);
             setNews(filterSlideData);
