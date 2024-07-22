@@ -15,6 +15,7 @@ const Header = () => {
     setIsMobActive(false)
   }
   return (
+    
     <header className='header-section'>
       <div className="header-container">
         <div className="top">
