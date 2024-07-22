@@ -15,8 +15,9 @@ const Header = () => {
     setIsMobActive(false)
   }
   return (
-    
+
     <header className='header-section'>
+      {/* header  */}
       <div className="header-container">
         <div className="top">
           <div className="contact-detail">
