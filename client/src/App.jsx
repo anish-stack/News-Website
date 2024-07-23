@@ -9,6 +9,8 @@ import Footer from './Components/Footer/Footer'
 import SinglePage from './Components/SinglePage/SinglePage'
 import NewsPage from './Components/NewsPage/NewsPage'
 import ContactForm from './Components/Contact/Contact'
+import Term from './Components/Policy/Term'
+import Privacy from './Components/Policy/Privacy'
 
 function App() {
 
@@ -21,6 +23,10 @@ function App() {
         <Route path='/Contact' element={<ContactForm />} />
 
         <Route path='/news-page/:headline/:id' element={<NewsPage />} />
+        <Route path='/term-condition' element={<Term />} />
+        <Route path='/privacy-policy' element={<Privacy />} />
+     
+
         
         
       </Routes>
