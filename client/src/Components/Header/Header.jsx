@@ -20,7 +20,7 @@ const Header = () => {
 
   const fetchHeadlines = async () => {
     try {
-      const response = await axios.get('http://localhost:7000/api/news/headlines');
+      const response = await axios.get('https://news-website-xaut.onrender.com/api/news/headlines');
       setHeadlines(response.data.headlines);
      
     } catch (error) {

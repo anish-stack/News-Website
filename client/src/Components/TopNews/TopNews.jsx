@@ -17,7 +17,7 @@ const TopNews = () => {
     
     const fetchNews = async () => {
         try {
-            const response = await axios.get('http://localhost:7000/api/news');
+            const response = await axios.get('https://news-website-xaut.onrender.com/api/news');
             const data = response.data;
             console.log(data)
             const FilterSlideData = data.filter((item) => item.ShowAtSlider === true);
