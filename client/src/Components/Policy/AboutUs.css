@@ -1,0 +1,80 @@
+/* AboutUs.css */
+.about-us-container {
+    padding: 1rem;
+  }
+  
+  .logo-img {
+    max-width: 150px;
+  }
+  
+  .about-us-content {
+    background-color: #f8f9fa;
+    padding: 2rem;
+  }
+  
+  .vertical-news {
+    background-color: #f1f1f1;
+    padding: 1rem;
+    border-left: 2px solid #ddd;
+  }
+  
+  .news-item {
+    margin-bottom: 1rem;
+  }
+  
+  .news-item .category-col-img img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+  }
+  
+  .category-col-heading {
+    margin-top: 0.5rem;
+  }
+  
+  .cate-date {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+  }
+  
+  .cate {
+    background-color: #007bff;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    color: #fff;
+  }
+  
+  .date {
+    color: #6c757d;
+  }
+  
+  .auth-name {
+    font-size: 0.8rem;
+    color: #6c757d;
+  }
+  
+  .contact-info h2 {
+    margin-bottom: 1rem;
+  }
+  
+  .contact-info p {
+    font-size: 1.1rem;
+    margin: 0.5rem 0;
+  }
+  
+  .contact-info a {
+    text-decoration: none;
+    color: #007bff;
+  }
+  
+  .contact-info a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Optional styling for Font Awesome icons */
+  .contact-info i {
+    margin-right: 0.5rem;
+    color: #007bff;
+  }
+  

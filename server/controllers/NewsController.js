@@ -28,22 +28,8 @@ const uploadImage = (buffer) => {
 // Create news
 exports.createNews = async (req, res) => {
     try {
-      const { headline, storyCoveredBy, newsCategory, whichRelatedNewsShow, newsHtmlData,NewsHeadImage } = req.body;
-    //   const files = req.files;
-    //     console.log(files)
-    //   if (!files || files.length === 0) {
-    //     return res.status(400).json({ error: 'No images uploaded' });
-    //   }
-  
-    //   // Upload images to Cloudinary
-      
-    //   const imageUploads = await Promise.all(files.map(async (file) => {
-    //     const result = await uploadImage(file.buffer);
-    //     return {
-    //       imageUrl: result.secure_url,
-    //       publicId: result.public_id
-    //     };
-    //   }));
+      const { headline, storyCoveredBy, newsCategory, newsHtmlData,NewsHeadImage } = req.body;
+ 
   
   
       const news = new News({
@@ -65,15 +51,36 @@ exports.createNews = async (req, res) => {
   };
 // Update news
 exports.updateNews = async (req, res) => {
+    const { id } = req.params;
+    const updateFields = req.body;
+    // console.log(updateFields)
     try {
-        const news = await News.findByIdAndUpdate(req.params.id, req.body, { new: true });
-        if (!news) return res.status(404).json({ error: 'News not found' });
-        cache.flushAll(); // Clear cache after updating news
-        res.status(200).json(news);
+      // Find the news item by id
+      const news = await News.findById(id);
+      
+      if (!news) {
+        return res.status(404).json({ error: 'News item not found' });
+      }
+  
+      // Update only the fields that are present in the request
+      Object.keys(updateFields).forEach((key) => {
+        if (news[key] !== undefined) {
+          news[key] = updateFields[key];
+        }
+      });
+  
+      // Save the updated news item
+      await news.save();
+  
+     
+  
+      // Respond with the updated news item
+      res.status(200).json(news);
     } catch (error) {
-        res.status(400).json({ error: error.message });
+      console.error('Error updating news:', error);
+      res.status(400).json({ error: error.message });
     }
-};
+  };
 
 // Get a single news
 exports.getSingleNews = async (req, res) => {

@@ -8,6 +8,8 @@ import Header from './components/Header/Header';
 import CurrentNews from './pages/CurrentNews';
 import { Toaster } from 'react-hot-toast';
 import ManageNews from './pages/Managenews';
+import Headlines from './pages/Headlines';
+import EditNews from './pages/EditNews';
 
 const App = () => {
   return (
@@ -21,6 +23,8 @@ const App = () => {
           <Route path="/check-category" element={<CheckCategory />} />
           <Route path="/see-news" element={<CurrentNews />} />
           <Route path="/manage-news" element={<ManageNews />} />
+          <Route path="/Headlines" element={<Headlines />} />
+          <Route path="/Edit-News/:id" element={<EditNews />} />
 
 
         </Routes>

@@ -19,6 +19,9 @@ const Header = () => {
               <NavLink className="nav-link custom-nav-link" to="/create-news">Create News</NavLink>
             </li>
             <li className="nav-item">
+              <NavLink className="nav-link custom-nav-link" to="/Headlines">Headlines</NavLink>
+            </li>
+            <li className="nav-item">
               <NavLink className="nav-link custom-nav-link" to="/all-news">All News</NavLink>
             </li>
             <li className="nav-item">

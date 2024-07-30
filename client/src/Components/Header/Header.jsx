@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import logo from './Aam awaz logo 1.png'
 import './Hearder.css'
 import { useState } from 'react';
+import axios from 'axios'
+import { useEffect } from 'react';
 const Header = () => {
-  const [isMobActive,setIsMobActive] = useState(false)
+  const [isMobActive, setIsMobActive] = useState(false)
   const generateLink = (category) => {
     return `/single-page?category=${encodeURIComponent(category)}`;
   }
@@ -14,10 +16,56 @@ const Header = () => {
   const handleIsMobDeActive = () => {
     setIsMobActive(false)
   }
+  const [headlines, setHeadlines] = useState([]);
+
+  const fetchHeadlines = async () => {
+    try {
+      const response = await axios.get('http://localhost:7000/api/news/headlines');
+      setHeadlines(response.data.headlines);
+     
+    } catch (error) {
+      console.error('Error fetching headlines:', error);
+    }
+  };
+  useEffect(()=>{
+    fetchHeadlines()
+  },[])
+
   return (
 
     <header className='header-section'>
       {/* header  */}
+      <div className='top-header'>
+        <div className='pages'>
+          <ul className='d-flex '>
+            <li><Link to={'/'}>Contact us</Link></li>
+            <li><Link to={'/About'}>About</Link></li>
+            <li><Link to={'/privacy-policy'}>Privacy Policy</Link></li>
+            <li><Link to={'/Disclaimer'}>Disclaimer</Link></li>
+            <li><Link to={'/term-condition'}>Terms & Conditions</Link></li>
+
+
+          </ul>
+          <ul className="social-links d-flex">
+            <li>            <a href=""><i class="ri-facebook-box-fill"></i></a>
+            </li>
+            <li>            <a href=""><i class="ri-instagram-fill"></i></a>
+            </li>
+            <li>            <a href=""><i class="ri-twitter-x-fill"></i></a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+      <div className="headlines-container">
+        <div className="headlines-marquee">
+          {headlines.map((item, index) => (
+            <div className="headlines-item" key={index}>
+              {item.headlineText}
+            </div>
+          ))}
+        </div>
+      </div>
       <div className="header-container">
         <div className="top">
           <div className="contact-detail">

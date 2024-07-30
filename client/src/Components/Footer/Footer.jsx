@@ -15,7 +15,7 @@ const Footer = () => {
                             <div className="footer-widget">
                                 <h3 className="title">Get in Touch</h3>
                                 <div className="contact-info">
-                                    <p><i className="fa fa-map-marker"></i>S.R.Nagar, Delhi</p>
+                                    <p><i className="fa fa-map-marker"></i>1/368 - A Ground Floor , Shiri Ram Nagar, Shahdara Delhi -32</p>
                                     <p><i className="fa fa-envelope"></i>
                                         info@aamawaz.com</p>
                                     <p><i className="fa fa-phone"></i>9910150906</p>

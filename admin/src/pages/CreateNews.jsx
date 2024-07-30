@@ -51,7 +51,7 @@ const CreateNews = () => {
     formData.append('NewsHeadImage', NewsHeadImage);
 
     try {
-      const response = await axios.post('https://news-website-rslv.onrender.com/api/news/create-news', formData, {
+      const response = await axios.post('http://localhost:7000/api/news/create-news', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }

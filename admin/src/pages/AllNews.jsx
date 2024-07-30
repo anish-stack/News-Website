@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast'
+import {Link} from 'react-router-dom'
 const newsCategories = [
     { id: 1, name: 'घर' },
     { id: 2, name: 'देश' },
@@ -30,7 +31,7 @@ const AllNews = () => {
 
     const fetchNews = async () => {
         try {
-            const response = await axios.get('https://news-website-rslv.onrender.com/api/news');
+            const response = await axios.get('http://localhost:7000/api/news');
             setNews(response.data);
             setFilteredNews(response.data.reverse()); // Initialize filteredNews with all news
         } catch (error) {
@@ -40,7 +41,7 @@ const AllNews = () => {
 
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`https://news-website-rslv.onrender.com/api/news/${id}`);
+            await axios.delete(`http://localhost:7000/api/news/${id}`);
             // Update news state after deletion
             toast.success('News Delete Successful')
             const updatedNews = news.filter(item => item._id !== id);
@@ -121,7 +122,7 @@ const AllNews = () => {
                             <td>{new Date(item.updatedAt).toLocaleString()}</td>
                             <td>
                                 <button className="btn btn-success me-2" onClick={() => SeeNews(item._id)}  >View News</button>
-                                <button className="btn btn-primary me-2">Edit</button>
+                                <Link to={`/Edit-News/${item._id}`} className="btn btn-primary me-2">Edit</Link>
                                 <button className="btn btn-danger" onClick={() => handleDelete(item._id)}>Delete</button>
                             </td>
                         </tr>

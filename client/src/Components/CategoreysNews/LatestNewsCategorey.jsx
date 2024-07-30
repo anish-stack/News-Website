@@ -9,7 +9,7 @@ const LatestNewsCategory = () => {
 
     const fetchNews = async () => {
         try {
-            const response = await axios.get('https://news-website-rslv.onrender.com/api/news');
+            const response = await axios.get('http://localhost:7000/api/news');
             const data = response.data;
             const filterSlideData = data.filter((item) => item.ShowAtLatestNews === true);
             setNews(filterSlideData);
@@ -32,13 +32,13 @@ const LatestNewsCategory = () => {
                 </div>
                 <div className="row">
                     {displayedNews.map((item, index) => (
-                        <Link to={`/news-page/${item.headline}/${item._id}`} className=" col-12 col-sm-6 col-lg-3 mb-4" key={index}>
+                        <Link to={`/news-page/${item.headline}/${item._id}`} className=" col-12 col-sm-6 new col-lg-3 mb-4" key={index}>
                             <div className="category-col-img">
                                 <img loading='lazy' onError={(e)=>e.target.src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8bUqIUkfyesCXuAFw-MFLebEI-5to1ouplw&s"} src={item.NewsHeadImage} alt={item.headline} className="img-fluid" />
                             </div>
                             <div className="category-col-heading">
                                 <div className="cate-date">
-                                    <span className='cate'>{item.newsCategory}</span>
+                                    <span className='cate text-white'>{item.newsCategory}</span>
                                     <span className='date'>{new Date(item.createdAt).toLocaleString()}</span>
                                 </div>
                                 <p>{item.headline}</p>
