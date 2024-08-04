@@ -207,7 +207,7 @@
   /* Marquee style */
   .headlines-marquee {
     display: flex;
-    animation: marquee 45s linear infinite;
+    animation: marquee 15s linear infinite;
     white-space: nowrap;
     font-size: 1.2rem;
     color: #003873; /* Dark blue text color */
@@ -218,8 +218,8 @@
     margin-right: 50px; /* Space between headlines */
     padding: 5px 15px;
     border-radius: 5px;
-    background-color: #ddf3f2; /* Light greenish background for items */
-    color: #000;
+    background-color: #131313; /* Light greenish background for items */
+    color: #fff;
   }
   
   /* Animation for marquee effect */

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 // import './Footer.css'; // Make sure to import your CSS file
 
 const Footer = () => {
@@ -15,7 +16,7 @@ const Footer = () => {
                             <div className="footer-widget">
                                 <h3 className="title">Get in Touch</h3>
                                 <div className="contact-info">
-                                    <p><i className="fa fa-map-marker"></i>1/368-A, Ground Floor, Shri Ram Nagar, Shahdara, Delhi-110032</p>
+                                    <p>Registered Office "<i className="fa fa-map-marker"></i>1/368-A, Ground Floor, Shri Ram Nagar, Shahdara, Delhi-110032</p>
                                     <p><i className="fa fa-envelope"></i>
                                         info@aamawaz.com</p>
                                     <p><i className="fa fa-phone"></i>9910150906</p>
@@ -89,16 +90,14 @@ const Footer = () => {
 
                         <div className="col-lg-3 col-md-6">
                             <div className="footer-widget">
-                            <h3 className="title">Policies Links</h3>
-<ul className=''>
-
-    <li>
-        <a href='/term-condition' className='text-white'>Terms And Conditions</a>
-    </li>
-    <li>
-        <a  href='/privacy-policy' className='text-white'>Privacy Policy</a>
-    </li>
-</ul>
+                                <h3 className="title">Policies Links</h3>
+                                <ul className=''>
+                                    <li><Link to={'/contact'}>Contact us</Link></li>
+                                    <li><Link to={'/About'}>About</Link></li>
+                                    <li><Link to={'/privacy-policy'}>Privacy Policy</Link></li>
+                                    <li><Link to={'/Disclaimer'}>Disclaimer</Link></li>
+                                    <li><Link to={'/term-condition'}>Terms & Conditions</Link></li>
+                                </ul>
 
 
                             </div>
@@ -109,7 +108,7 @@ const Footer = () => {
             {/* Footer End */}
 
             {/* Footer Menu Start */}
-          
+
             {/* Footer Menu End */}
 
             {/* Footer Bottom Start */}
@@ -117,7 +116,7 @@ const Footer = () => {
                 <div className="container">
                     <div className="row">
                         <div className="col-md-6 copyright">
-                            <p>Copyright &copy; <a href="">AAM AWAZ</a>. All Rights Reserved</p>
+                            <p>Copyright &copy; <a href="">2024 AAM AWAZ </a>. All Rights Reserved</p>
                         </div>
 
                         <div className="col-md-6 template-by">

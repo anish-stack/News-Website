@@ -40,7 +40,7 @@ const EditNews = () => {
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const response = await axios.get(`https://news-website-xaut.onrender.com/api/news/${id}`);
+        const response = await axios.get(`http://localhost:7000/api/news/${id}`);
         const data = response.data;
         setFormData({
           headline: data.headline,
@@ -81,7 +81,7 @@ const EditNews = () => {
     console.log(formData)
 
     try {
-      const response = await axios.put(`https://news-website-xaut.onrender.com/api/news/${id}`, formData);
+      const response = await axios.put(`http://localhost:7000/api/news/${id}`, formData);
       console.log(response.data);
       toast.success('News updated successfully');
       navigate('/all-news');

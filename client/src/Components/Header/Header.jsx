@@ -20,7 +20,7 @@ const Header = () => {
 
   const fetchHeadlines = async () => {
     try {
-      const response = await axios.get('https://news-website-xaut.onrender.com/api/news/headlines');
+      const response = await axios.get('http://localhost:7000/api/news/headlines');
       setHeadlines(response.data.headlines);
 
     } catch (error) {
@@ -47,11 +47,14 @@ const Header = () => {
 
           </ul>
           <ul className="social-links d-flex">
-            <li>            <a href=""><i class="ri-facebook-box-fill"></i></a>
+            <li>            <a href="https://www.facebook.com/aamawaz.india"><i class="ri-facebook-box-fill"></i></a>
             </li>
-            <li>            <a href=""><i class="ri-instagram-fill"></i></a>
+            <li>            <a href="https://www.instagram.com/aam_awaz/"><i class="ri-instagram-fill"></i></a>
             </li>
-            <li>            <a href=""><i class="ri-twitter-x-fill"></i></a>
+            <li>            <a href="https://www.youtube.com/@aamawaz9265"><i class="ri-youtube-fill"></i></a>
+            </li>
+            <li>
+            <a href="https://www.linkedin.com/in/aam-awaz-14234a8a"><i class="ri-linkedin-fill"></i></a>
             </li>
           </ul>
         </div>
@@ -75,9 +78,12 @@ const Header = () => {
             <img src={logo} alt="" />
           </Link>
           <div className="social-link">
-            <a href=""><i class="ri-facebook-box-fill"></i></a>
-            <a href=""><i class="ri-instagram-fill"></i></a>
-            <a href=""><i class="ri-twitter-x-fill"></i></a>
+          <a href="https://www.facebook.com/aamawaz.india"><i class="ri-facebook-box-fill"></i></a>
+            <a href="https://www.instagram.com/aam_awaz/"><i class="ri-instagram-fill"></i></a>
+            <a href="https://www.youtube.com/@aamawaz9265"><i class="ri-youtube-fill"></i></a>
+            <a href="https://www.linkedin.com/in/aam-awaz-14234a8a"><i class="ri-linkedin-fill"></i></a>
+
+          
           </div>
           <div className="menu" onClick={handleIsMobActive}>
             <i class="ri-menu-line"></i>
