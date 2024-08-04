@@ -14,7 +14,7 @@ const ManageNews = () => {
     // Function to fetch all news from the backend
     const fetchNews = async () => {
         try {
-            const response = await axios.get('https://news-website-xaut.onrender.com/api/news');
+            const response = await axios.get('http://localhost:7000/api/news');
             setNews(response.data);
         } catch (error) {
             console.error('Error fetching news:', error);
@@ -27,9 +27,9 @@ const ManageNews = () => {
             let response;
             // Toggle the current status
             if (currentStatus) {
-                response = await axios.put(`https://news-website-xaut.onrender.com/api/news/latest-deactivate/${id}`);
+                response = await axios.put(`http://localhost:7000/api/news/latest-deactivate/${id}`);
             } else {
-                response = await axios.put(`https://news-website-xaut.onrender.com/api/news/latest-update/${id}`, { ShowAtLatestNews: true });
+                response = await axios.put(`http://localhost:7000/api/news/latest-update/${id}`, { ShowAtLatestNews: true });
             }
 
             // Update the news state with the updated status
@@ -51,9 +51,9 @@ const ManageNews = () => {
             let response;
             // Toggle the current status
             if (currentStatus) {
-                response = await axios.put(`https://news-website-xaut.onrender.com/api/news/slider-deactivate/${id}`);
+                response = await axios.put(`http://localhost:7000/api/news/slider-deactivate/${id}`);
             } else {
-                response = await axios.put(`https://news-website-xaut.onrender.com/api/news/slider-update/${id}`, { ShowAtSlider: true });
+                response = await axios.put(`http://localhost:7000/api/news/slider-update/${id}`, { ShowAtSlider: true });
             }
 
             // Update the news state with the updated status
