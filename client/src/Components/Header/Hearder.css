@@ -235,3 +235,18 @@
         align-items: center;
         justify-content: center;
     }
+
+    @media screen and (max-width:768px) {
+        .headlines-marquee {
+            display: flex;
+            animation: marquee 25s linear infinite;
+            white-space: nowrap;
+            font-size: 1.2rem;
+            color: #003873; /* Dark blue text color */
+          }
+          .pages{
+          display: none;
+            /* overflow-x: scroll; */
+          }
+   
+    }

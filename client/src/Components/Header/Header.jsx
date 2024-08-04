@@ -22,14 +22,14 @@ const Header = () => {
     try {
       const response = await axios.get('https://news-website-xaut.onrender.com/api/news/headlines');
       setHeadlines(response.data.headlines);
-     
+
     } catch (error) {
       console.error('Error fetching headlines:', error);
     }
   };
-  useEffect(()=>{
+  useEffect(() => {
     fetchHeadlines()
-  },[])
+  }, [])
 
   return (
 
@@ -38,7 +38,7 @@ const Header = () => {
       <div className='top-header'>
         <div className='pages'>
           <ul className='d-flex '>
-            <li><Link to={'/'}>Contact us</Link></li>
+            <li><Link to={'/contact'}>Contact us</Link></li>
             <li><Link to={'/About'}>About</Link></li>
             <li><Link to={'/privacy-policy'}>Privacy Policy</Link></li>
             <li><Link to={'/Disclaimer'}>Disclaimer</Link></li>

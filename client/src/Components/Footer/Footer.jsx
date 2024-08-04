@@ -15,7 +15,7 @@ const Footer = () => {
                             <div className="footer-widget">
                                 <h3 className="title">Get in Touch</h3>
                                 <div className="contact-info">
-                                    <p><i className="fa fa-map-marker"></i>1/368 - A Ground Floor , Shiri Ram Nagar, Shahdara Delhi -32</p>
+                                    <p><i className="fa fa-map-marker"></i>1/368-A, Ground Floor, Shri Ram Nagar, Shahdara, Delhi-110032</p>
                                     <p><i className="fa fa-envelope"></i>
                                         info@aamawaz.com</p>
                                     <p><i className="fa fa-phone"></i>9910150906</p>
@@ -121,7 +121,7 @@ const Footer = () => {
                         </div>
 
                         <div className="col-md-6 template-by">
-                            <p>Designed By <a href="https://digital4now.in/">Digital4Now</a></p>
+                            <p>Designed as per Guidelines of Ministry of Information and Broadcasting</p>
                         </div>
                     </div>
                 </div>
