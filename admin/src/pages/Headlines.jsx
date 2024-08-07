@@ -14,7 +14,7 @@ const Headlines = () => {
   // Fetch all active headlines with pagination
   const fetchHeadlines = async (page = 1) => {
     try {
-      const response = await axios.get('http://localhost:7000/api/news/admin-headlines', {
+      const response = await axios.get('https://www.api.aamawaz.com/api/news/admin-headlines', {
         params: { page, limit: pageSize }
       });
       setHeadlines(response.data.headlines);
@@ -28,7 +28,7 @@ const Headlines = () => {
   // Create a new headline
   const createHeadline = async () => {
     try {
-      const response = await axios.post('http://localhost:7000/api/news/headlines', { headlineText: newHeadline });
+      const response = await axios.post('https://www.api.aamawaz.com/api/news/headlines', { headlineText: newHeadline });
       fetchHeadlines(currentPage); // Refresh the headlines
       setNewHeadline('');
     } catch (error) {
@@ -39,7 +39,7 @@ const Headlines = () => {
   // Update a headline
   const updateHeadline = async () => {
     try {
-      const response = await axios.put(`http://localhost:7000/api/news/headlines/${editId}`, { headlineText: editHeadlineText });
+      const response = await axios.put(`https://www.api.aamawaz.com/api/news/headlines/${editId}`, { headlineText: editHeadlineText });
       fetchHeadlines(currentPage); // Refresh the headlines
       setEditId(null);
       setEditHeadlineText('');
@@ -51,7 +51,7 @@ const Headlines = () => {
   // Toggle active status of a headline
   const toggleActiveStatus = async (id, currentStatus) => {
     try {
-      const response = await axios.put(`http://localhost:7000/api/news/headlines/${id}`, { active: !currentStatus });
+      const response = await axios.put(`https://www.api.aamawaz.com/api/news/headlines/${id}`, { active: !currentStatus });
       fetchHeadlines(currentPage); // Refresh the headlines
     } catch (error) {
       console.error('Error toggling active status:', error);
@@ -61,7 +61,7 @@ const Headlines = () => {
   // Delete a headline
   const deleteHeadline = async (id) => {
     try {
-      await axios.delete(`http://localhost:7000/api/news/headlines/${id}`);
+      await axios.delete(`https://www.api.aamawaz.com/api/news/headlines/${id}`);
       fetchHeadlines(currentPage); // Refresh the headlines
     } catch (error) {
       console.error('Error deleting headline:', error);

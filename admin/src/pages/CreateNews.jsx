@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import './CreateNews.css'; // Custom CSS file for additional styling
 import JoditEditor from 'jodit-react';
@@ -24,10 +24,12 @@ const CreateNews = () => {
   const [headline, setHeadline] = useState('');
   const [storyCoveredBy, setStoryCoveredBy] = useState('');
   const [images, setImages] = useState([]);
-  const [NewsHeadImage,setNewsHeadImage] = useState('')
+  const [NewsHeadImage, setNewsHeadImage] = useState('');
   const [newsCategory, setNewsCategory] = useState('');
   const [whichRelatedNewsShow, setWhichRelatedNewsShow] = useState('');
   const [newsHtmlData, setNewsHtmlData] = useState('');
+
+  const editor = useRef(null);
 
   const handleImageChange = (e) => {
     const files = Array.from(e.target.files);
@@ -51,18 +53,16 @@ const CreateNews = () => {
     formData.append('NewsHeadImage', NewsHeadImage);
 
     try {
-      const response = await axios.post('http://localhost:7000/api/news/create-news', formData, {
+      const response = await axios.post('https://www.api.aamawaz.com/api/news/create-news', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
       });
-      
+
       console.log('News created:', response.data);
-      // Optionally redirect or show success message
-      window.location.href="/all-news"
+      window.location.href = "/all-news";
     } catch (error) {
       console.error('Error creating news:', error);
-      // Handle error, show error message
     }
   };
 
@@ -80,7 +80,7 @@ const CreateNews = () => {
             <input type="text" className="form-control" id="storyCoveredBy" value={storyCoveredBy} onChange={(e) => setStoryCoveredBy(e.target.value)} required />
           </div>
         </div>
-        
+
         <div className='row'>
           <div className="mb-3 col-md-6">
             <label htmlFor="newsCategory" className="form-label">News Category</label>
@@ -92,28 +92,25 @@ const CreateNews = () => {
             </select>
           </div>
           <div className="mb-3 col-md-6">
-            <label htmlFor="storyCoveredBy" className="form-label">Image Link</label>
+            <label htmlFor="NewsHeadImage" className="form-label">Image Link</label>
             <input type="text" className="form-control" id="NewsHeadImage" value={NewsHeadImage} onChange={(e) => setNewsHeadImage(e.target.value)} required />
           </div>
-    
         </div>
 
         <div className="mb-3">
           <label htmlFor="newsHtmlData" className="form-label">News HTML Data</label>
           <JoditEditor
+            ref={editor}
             value={newsHtmlData}
-            onChange={(newContent) => setNewsHtmlData(newContent)}
+            onBlur={(newContent) => setNewsHtmlData(newContent)}
             config={{
-              readonly: false, // set to true if you want to disable editing
+              readonly: false,
               minHeight: 300,
-              // buttons: 'heading,bold,italic,underline,|,align,left,center,right,|,ul,ol,|,font,size,color,|,link,image,table',
               disablePlugins: 'resize',
               showXPathInStatusbar: false,
             }}
           />
         </div>
-
-      
 
         <button type="submit" className="btn btn-primary">Create News</button>
       </form>

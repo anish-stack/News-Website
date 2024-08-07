@@ -20,7 +20,7 @@ const Header = () => {
 
   const fetchHeadlines = async () => {
     try {
-      const response = await axios.get('http://localhost:7000/api/news/headlines');
+      const response = await axios.get('https://www.api.aamawaz.com/api/news/headlines');
       setHeadlines(response.data.headlines);
 
     } catch (error) {
@@ -30,6 +30,20 @@ const Header = () => {
   useEffect(() => {
     fetchHeadlines()
   }, [])
+
+  const [currentTime, setCurrentTime] = useState(new Date());
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000); // Update the time every second
+
+    return () => clearInterval(timer); // Cleanup the interval on component unmount
+  }, []);
+
+  // Format the time as HH:MM AM/PM
+  const formattedTime = currentTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true });
+
 
   return (
 
@@ -54,13 +68,15 @@ const Header = () => {
             <li>            <a href="https://www.youtube.com/@aamawaz9265"><i class="ri-youtube-fill"></i></a>
             </li>
             <li>
-            <a href="https://www.linkedin.com/in/aam-awaz-14234a8a"><i class="ri-linkedin-fill"></i></a>
+              <a href="https://www.linkedin.com/in/aam-awaz-14234a8a"><i class="ri-linkedin-fill"></i></a>
             </li>
           </ul>
         </div>
-
       </div>
       <div className="headlines-container">
+        <div className="date-box">
+        <h2>{formattedTime}</h2>
+        </div>
         <div className="headlines-marquee">
           {headlines.map((item, index) => (
             <div className="headlines-item" key={index}>
@@ -78,12 +94,12 @@ const Header = () => {
             <img src={logo} alt="" />
           </Link>
           <div className="social-link">
-          <a href="https://www.facebook.com/aamawaz.india"><i class="ri-facebook-box-fill"></i></a>
+            <a href="https://www.facebook.com/aamawaz.india"><i class="ri-facebook-box-fill"></i></a>
             <a href="https://www.instagram.com/aam_awaz/"><i class="ri-instagram-fill"></i></a>
             <a href="https://www.youtube.com/@aamawaz9265"><i class="ri-youtube-fill"></i></a>
             <a href="https://www.linkedin.com/in/aam-awaz-14234a8a"><i class="ri-linkedin-fill"></i></a>
 
-          
+
           </div>
           <div className="menu" onClick={handleIsMobActive}>
             <i class="ri-menu-line"></i>

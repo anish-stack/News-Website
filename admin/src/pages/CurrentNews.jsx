@@ -13,7 +13,7 @@ const CurrentNews = () => {
         const newsId = searchParams.get('News');
 
         // Fetching data using Axios
-        const response = await axios.get(`http://localhost:7000/api/news/${newsId}`);
+        const response = await axios.get(`https://www.api.aamawaz.com/api/news/${newsId}`);
         setNewsData(response.data); // Setting fetched news data to state
       } catch (error) {
         console.error('Error fetching news:', error);

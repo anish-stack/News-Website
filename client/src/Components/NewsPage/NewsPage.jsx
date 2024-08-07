@@ -11,7 +11,7 @@ function NewsPage() {
 
     const fetchNews = useCallback(async () => {
         try {
-            const response = await axios.get(`http://localhost:7000/api/news/${id}`);
+            const response = await axios.get(`https://www.api.aamawaz.com/api/news/${id}`);
             setNews(response.data);
             console.log(response.data)
         } catch (error) {
