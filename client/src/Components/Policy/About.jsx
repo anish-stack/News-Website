@@ -54,7 +54,7 @@ const AboutUs = () => {
         {/* Vertical News Section */}
         <div className="col-lg-4 vertical-news">
           {news.slice(0,4).map((item, index) => (
-            <Link to={`/news-page/${item.headline}/${item._id}`}  className="news-item" key={index}>
+            <Link  to={`/news-page/${item._id}`}  className="news-item" key={index}>
               <div className="category-col-img">
                 <img
                   loading="lazy"

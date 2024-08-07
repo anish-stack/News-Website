@@ -33,7 +33,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/single-page" element={<SinglePage />} />
         <Route path="/contact" element={<ContactForm />} />
-        <Route path="/news-page/:headline/:id" element={<NewsPage />} />
+        <Route path="/news-page/:id" element={<NewsPage />} />
         <Route path="/term-condition" element={<Term />} />
         <Route path="/privacy-policy" element={<Privacy />} />
         <Route path="/disclaimer" element={<Disclaimer />} />
