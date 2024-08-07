@@ -203,11 +203,30 @@
     background-color: #f0f8ff; /* Light background color */
     padding: 10px 0;
   }
+
+  .headlines-container .date-box{
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    z-index: 999;
+    background-color: white;
+    /* width: ; */
+    padding: 0px 5px;
+  }
+
+  .headlines-container .date-box h2{
+    padding: 0;
+    margin: 0;
+  }
   
   /* Marquee style */
   .headlines-marquee {
     display: flex;
-    animation: marquee 15s linear infinite;
+    animation: marquee 30s linear infinite;
     white-space: nowrap;
     font-size: 1.2rem;
     color: #003873; /* Dark blue text color */
@@ -247,6 +266,19 @@
           .pages{
           display: none;
             /* overflow-x: scroll; */
+          }
+
+          .headlines-marquee {
+            display: flex;
+            animation: marquee 12s linear infinite;
+            white-space: nowrap;
+            font-size: 1.2rem;
+            color: #003873; /* Dark blue text color */
+          }
+
+          @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-200%); }
           }
    
     }

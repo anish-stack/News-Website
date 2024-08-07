@@ -21,11 +21,10 @@ const Footer = () => {
                                         info@aamawaz.com</p>
                                     <p><i className="fa fa-phone"></i>9910150906</p>
                                     <div className="social">
-                                        <a href=""><i className="fab fa-twitter"></i></a>
-                                        <a href=""><i className="fab fa-facebook-f"></i></a>
-                                        <a href=""><i className="fab fa-linkedin-in"></i></a>
-                                        <a href=""><i className="fab fa-instagram"></i></a>
-                                        <a href=""><i className="fab fa-youtube"></i></a>
+                                        <a target='_blank' href="https://www.facebook.com/aamawaz.india"><i className="fab fa-facebook-f"></i></a>
+                                        <a target='_blank' href="https://www.linkedin.com/in/aam-awaz-14234a8a"><i className="fab fa-linkedin-in"></i></a>
+                                        <a target='_blank' href="https://www.instagram.com/aam_awaz/"><i className="fab fa-instagram"></i></a>
+                                        <a target='_blank' href="https://www.youtube.com/@aamawaz9265"><i className="fab fa-youtube"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -116,7 +115,7 @@ const Footer = () => {
                 <div className="container">
                     <div className="row">
                         <div className="col-md-6 copyright">
-                            <p>Copyright &copy; <a href="">2024 AAM AWAZ </a>. All Rights Reserved</p>
+                            <p>Copyright &copy; 2024<a href=""> AAM AWAZ </a>All Rights Reserved.</p>
                         </div>
 
                         <div className="col-md-6 template-by">
