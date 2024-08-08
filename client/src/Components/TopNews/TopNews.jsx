@@ -14,7 +14,7 @@ import axios from 'axios';
 
 const TopNews = () => {
     const [News, setNews] = useState([]);
-    
+
     const fetchNews = async () => {
         try {
             const response = await axios.get('https://www.api.aamawaz.com/api/news');
@@ -58,19 +58,19 @@ const TopNews = () => {
                 className="mySwiper"
             >
                 {News && News.map((item, index) => (
-                   <SwiperSlide onClick={() => window.location.href = `/news-page/${item._id}`} key={index} className='tranding-main-box'>
-                   <div className="img">
-                       <img loading='lazy' onError={(e)=>e.target.src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8bUqIUkfyesCXuAFw-MFLebEI-5to1ouplw&s"} src={item.NewsHeadImage} alt={item.headline} />
-                   </div>
-                   <div className="content">
-                       <div className="cate-date">
-                           <span className="cate">{item.newsCategory}</span>
-                           <span className="date text-white">{new Date(item.createdAt).toLocaleString()}</span>
-                       </div>
-                       <p>{item.headline}</p>
-                   </div>
-               </SwiperSlide>
-               
+                    <SwiperSlide onClick={() => window.location.href = `/news-page/${item._id}`} key={index} className='tranding-main-box'>
+                        <div className="img">
+                            <img loading='lazy' onError={(e) => e.target.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8bUqIUkfyesCXuAFw-MFLebEI-5to1ouplw&s"} src={item.NewsHeadImage} alt={item.headline} />
+                        </div>
+                        <div className="content">
+                            <div className="cate-date">
+                                <span className="cate">{item.newsCategory}</span>
+                                <span className="date text-white">{new Date(item.createdAt).toLocaleString()}</span>
+                            </div>
+                            <p>{item.headline}</p>
+                        </div>
+                    </SwiperSlide>
+
                 ))}
             </Swiper>
         </div>

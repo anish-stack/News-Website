@@ -75,7 +75,7 @@ const Header = () => {
       </div>
       <div className="headlines-container">
         <div className="date-box">
-        <h2>{formattedTime}</h2>
+        <h2>Breaking <span className='text-danger'>News</span> </h2>
         </div>
         <div className="headlines-marquee">
           {headlines.map((item, index) => (
@@ -115,8 +115,8 @@ const Header = () => {
           <Link onClick={handleIsMobDeActive} to={generateLink('मनोरंजन')} >मनोरंजन</Link>
           <Link onClick={handleIsMobDeActive} to={generateLink('खेल')} >खेल</Link>
           <Link onClick={handleIsMobDeActive} to={generateLink('स्वास्थ्य')} >स्वास्थ्य</Link>
-          <Link onClick={handleIsMobDeActive} to={generateLink('तकनिकी')} >तकनिकी</Link>
-          <Link onClick={handleIsMobDeActive} to={generateLink('व्यापर')} >व्यापर</Link>
+          <Link onClick={handleIsMobDeActive} to={generateLink('तकनीकी')} >तकनीकी</Link>
+          <Link onClick={handleIsMobDeActive} to={generateLink('व्यापार')} >व्यापार</Link>
           <Link onClick={handleIsMobDeActive} to={generateLink('भ्रष्टाचार')} >भ्रष्टाचार</Link>
           <Link onClick={handleIsMobDeActive} to={generateLink('दिल्ली-एनसीआर')} >दिल्ली/एनसीआर</Link>
           <Link onClick={handleIsMobDeActive} to={generateLink('वीडियो')} >वीडियो</Link>

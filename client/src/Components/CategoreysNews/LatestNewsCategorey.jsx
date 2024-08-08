@@ -25,26 +25,38 @@ const LatestNewsCategory = () => {
     const displayedNews = showAll ? news : news.slice(0, 8);
 
     return (
-        <section className='CategoryHome-section'>
-            <div className="CategoryHome-container">
-                <div className="CategoryHome-heading">
-                    <h3>Latest News</h3>
+        <section className="py-5 bg-light">
+            <div className="container-fluid">
+                <div className="text-start mb-4">
+                    <h3 className="font-weight-bold fs-1">Latest News</h3>
+                    <hr />
                 </div>
                 <div className="row">
                     {displayedNews.map((item, index) => (
-                        <Link to={`/news-page/${item._id}`} className=" col-12 col-sm-6 new col-lg-3 mb-4" key={index}>
-                            <div className="category-col-img">
-                                <img loading='lazy' onError={(e)=>e.target.src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8bUqIUkfyesCXuAFw-MFLebEI-5to1ouplw&s"} src={item.NewsHeadImage} alt={item.headline} className="img-fluid" />
-                            </div>
-                            <div className="category-col-heading">
-                                <div className="cate-date">
-                                    <span className='cate text-white'>{item.newsCategory}</span>
-                                    <span className='date'>{new Date(item.createdAt).toLocaleString()}</span>
+                        <Link
+                            to={`/news-page/${item._id}`}
+                            className="col-12 col-sm-6 col-lg-3 mb-4 text-decoration-none"
+                            key={index}
+                        >
+                            <div className="card h-100 border-0 shadow-sm">
+                                <div className="overflow-hidden" style={{ height: '200px' }}>
+                                    <img
+                                        loading="lazy"
+                                        onError={(e) => e.target.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8bUqIUkfyesCXuAFw-MFLebEI-5to1ouplw&s"}
+                                        src={item.NewsHeadImage}
+                                        alt={item.headline}
+                                        className="img-fluid h-100 w-100"
+                                        style={{ objectFit: 'cover' }}
+                                    />
                                 </div>
-                                <p>{item.headline}</p>
-                            </div>
-                            <div className="auth">
-                                <p className='auth-name'>Covered By: {item.storyCoveredBy}</p>
+                                <div className="card-body d-flex flex-column">
+                                    <div className="mb-2">
+                                        <span className="badge bg-danger">{item.newsCategory}</span>
+                                        <small className="text-muted float-right">{new Date(item.createdAt).toLocaleString()}</small>
+                                    </div>
+                                    <h5 className="card-title text-dark">{item.headline}</h5>
+                                    <p className="text-muted mt-auto">Covered By: {item.storyCoveredBy}</p>
+                                </div>
                             </div>
                         </Link>
                     ))}
@@ -55,7 +67,7 @@ const LatestNewsCategory = () => {
                             {showAll ? 'View Less' : 'View More'}
                         </button>
                     </div>
-        )}
+                )}
             </div>
         </section>
     );

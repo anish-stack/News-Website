@@ -1,30 +1,26 @@
-.ad-posting-request{
-    height: 400px;
-    width: 100%;
-    background-size: cover;
-    position: relative;
-    padding: 100px 0; /* Adjust as needed */
-    color: #fff; /* Text color */
-    background-position: center;
-    background-attachment: fixed;
+.ad-posting-request {
     background-image: url('https://img.freepik.com/free-vector/spamming-email-spam-girl-cartoon-character-getting-unsolicited-undesirable-electronic-messages-advertising-messaging-commercial-newsletter_335657-363.jpg?t=st=1720627034~exp=1720630634~hmac=fbe282a861c9c53ae14e22976cac2b9800fd7bdc3d9a13d911e333e3af77c392&w=740');
-}.ad-content {
-    background-color: rgba(0, 0, 0, 0.6); /* Overlay color */
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height:40vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.ad-content p {
-    font-size: 18px;
-    line-height: 1.6;
+.ad-content {
+    background-color: rgba(0, 0, 0, 0.75); /* Dark overlay to enhance text visibility */
+    padding: 2rem;
+    border-radius: 0.5rem;
+    color: #ffffff;
 }
 
 .ad-content a {
-    color: #fff;
+    color: #ffc107; /* Bootstrap warning color */
     text-decoration: underline;
 }
 
 .ad-content a:hover {
-    text-decoration: none;
+    color: #fff;
 }

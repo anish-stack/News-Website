@@ -72,6 +72,7 @@ const SinglePage = () => {
                   <div className="category-col-img">
                     <img loading='lazy' onError={(e) => e.target.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8bUqIUkfyesCXuAFw-MFLebEI-5to1ouplw&s"} src={item.NewsHeadImage} alt={item.headline} className="img-fluid" />
                   </div>
+                 
                   <div className="category-col-heading">
                     <div className="cate-date">
                       <span className='cate'>{item.newsCategory}</span>
