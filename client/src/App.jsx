@@ -10,6 +10,7 @@ import Term from './Components/Policy/Term';
 import Privacy from './Components/Policy/Privacy';
 import Disclaimer from './Components/Policy/Disclaimer';
 import AboutUs from './Components/Policy/About';
+import ShareImage from './share';
 
 function ScrollToTop() {
   const location = useLocation();
@@ -24,10 +25,15 @@ function ScrollToTop() {
   return null;
 }
 
+
 function App() {
+
+  const imageUrl = 'https://plus.unsplash.com/premium_photo-1723489337930-8bdd92bba034?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwyfHx8ZW58MHx8fHx8';
+  const title = 'Check out this image!';
   return (
     <BrowserRouter>
       <ScrollToTop />
+      
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -38,6 +44,8 @@ function App() {
         <Route path="/privacy-policy" element={<Privacy />} />
         <Route path="/disclaimer" element={<Disclaimer />} />
         <Route path="/about" element={<AboutUs />} />
+        <Route path="/Share" element={<ShareImage imageUrl={imageUrl} title={title}  />} />
+
       </Routes>
       <Footer />
     </BrowserRouter>

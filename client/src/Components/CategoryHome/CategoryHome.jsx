@@ -8,7 +8,7 @@ const CategoryHome = () => {
 
     const fetchNews = async () => {
         try {
-            const response = await axios.get('https://www.api.aamawaz.com/api/news');
+            const response = await axios.get('https://api.aamawaz.com/api/news');
             const data = response.data;
             // console.log(data)
             const filterSlideData = data.filter((item) => item.newsCategory === "भ्रष्टाचार");

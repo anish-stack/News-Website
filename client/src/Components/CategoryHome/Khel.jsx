@@ -8,10 +8,10 @@ const Khel = () => {
 
     const fetchNews = async () => {
         try {
-            const response = await axios.get('https://www.api.aamawaz.com/api/news');
+            const response = await axios.get('https://api.aamawaz.com/api/news');
             const data = response.data;
             // console.log(data)
-            const filterSlideData = data.filter((item) => item.newsCategory === "खेल");
+            const filterSlideData = data.filter((item) => item.newsCategory === "राजनीति");
             setNews(filterSlideData);
         } catch (error) {
             console.error('Error fetching news:', error);
@@ -28,7 +28,7 @@ const Khel = () => {
         <section className="py-5 bg-light">
         <div className="container-fluid">
             <div className="text-start mb-4">
-                <h3 className="font-weight-bold fs-1">खेल</h3>
+                <h3 className="font-weight-bold fs-1">राजनीति</h3>
                 <hr />
             </div>
             <div className="row">

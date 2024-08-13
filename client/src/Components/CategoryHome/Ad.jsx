@@ -10,7 +10,7 @@ const AdPostingRequest = () => {
                         <div className="ad-content bg-dark bg-opacity-75 p-4 rounded">
                             <h2 className="mb-4 text-white text-center">Ad Posting Request</h2>
                             <p className="text-center text-white">
-                                Interested in advertising with us? Contact us at <a href="mailto:info@aamawaz.com" className="text-warning">info@aamawaz.com</a>.
+                                Interested in advertising with us? Contact us at <a href="mailto:contact@aamawaz.com" className="text-warning">contact@aamawaz.com</a>.
                             </p>
                         </div>
                     </div>

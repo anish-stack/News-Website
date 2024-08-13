@@ -53,7 +53,7 @@ const CreateNews = () => {
     formData.append('NewsHeadImage', NewsHeadImage);
 
     try {
-      const response = await axios.post('https://www.api.aamawaz.com/api/news/create-news', formData, {
+      const response = await axios.post('https://api.aamawaz.com/api/news/create-news', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }

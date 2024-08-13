@@ -3,6 +3,18 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Loader from '../Loader/Loader';
 import AdPostingRequest from '../CategoryHome/Ad';
+import { RWebShare } from "react-web-share";
+import {
+    FacebookShareButton,
+    TwitterShareButton,
+    LinkedinShareButton,
+    WhatsappShareButton,
+    FacebookIcon,
+    TwitterIcon,
+    LinkedinIcon,
+    WhatsappIcon
+} from "react-share";
+import HelmetProvider from '../../Meta/HelmetProvider';
 
 function NewsPage() {
     const { id } = useParams();
@@ -12,7 +24,7 @@ function NewsPage() {
 
     const fetchNews = useCallback(async () => {
         try {
-            const response = await axios.get(`https://www.api.aamawaz.com/api/news/${id}`);
+            const response = await axios.get(`https://api.aamawaz.com/api/news/${id}`);
             setNews(response.data);
         } catch (error) {
             console.error('Error fetching news:', error);
@@ -23,7 +35,7 @@ function NewsPage() {
 
     const fetchRelatedNews = useCallback(async () => {
         try {
-            const response = await axios.get('https://www.api.aamawaz.com/api/news');
+            const response = await axios.get('https://api.aamawaz.com/api/news');
             const data = response.data;
             const filteredData = data.filter((item) => item.newsCategory === news?.newsCategory && item._id !== id);
             setRelatedNews(filteredData);
@@ -63,6 +75,14 @@ function NewsPage() {
     }
 
     return (
+        <>
+        <HelmetProvider
+            NewsHeading={news.headline}
+            Description={news.storyCoveredBy}
+            imageUrl={news.NewsHeadImage}
+            NewsLink={window.location.href}
+        />
+
         <section className="py-5">
             <div className="container">
                 <div className="row">
@@ -73,7 +93,42 @@ function NewsPage() {
                             <span className="text-muted">{new Date(news.createdAt).toLocaleString()}</span>
                         </div>
                         <div className="mb-4">
-                            <div className="sharethis-inline-share-buttons mb-3"></div>
+                            {/* Social Share Buttons */}
+                            <div className="d-flex gap-2 mb-2">
+                                <FacebookShareButton
+                                    url={window.location.href}
+                                    quote={news.headline}
+                                    hashtag={`#${news.newsCategory}`}
+                                >
+                                    <button className="btn btn-outline-primary">Share on Facebook</button>
+                                </FacebookShareButton>
+
+                                <TwitterShareButton
+                                    url={window.location.href}
+                                    title={news.headline}
+                                    hashtags={[news.newsCategory]}
+                                    via="YourTwitterHandle"
+                                >
+                                    <button className="btn btn-outline-primary">Share on Twitter</button>
+                                </TwitterShareButton>
+
+                                <LinkedinShareButton
+                                    url={window.location.href}
+                                    title={news.headline}
+                                    summary={news.storyCoveredBy}
+                                    source="YourWebsiteName"
+                                >
+                                    <button className="btn btn-outline-primary">Share on LinkedIn</button>
+                                </LinkedinShareButton>
+
+                                <WhatsappShareButton
+                                    url={window.location.href}
+                                    title={news.headline}
+                                    separator=":: "
+                                >
+                                    <button className="btn btn-outline-primary">Share on WhatsApp</button>
+                                </WhatsappShareButton>
+                            </div>
                             <p className="text-primary text-decoration-underline">Covered By: {news.storyCoveredBy}</p>
                         </div>
                         <div className="mb-4 h-md-50 w-100">
@@ -116,18 +171,17 @@ function NewsPage() {
                                             <h5 className="mb-1">{related.headline}</h5>
                                             <small>{new Date(related.createdAt).toLocaleDateString()}</small>
                                         </div>
-                                        <p className="mb-1 text-truncate">{related.storyCoveredBy}</p>
                                     </a>
                                 ))
                             ) : (
-                                <div className="alert alert-info">No related news available.</div>
+                                <p className="text-muted">No related news available.</p>
                             )}
                         </div>
                     </div>
                 </div>
             </div>
-            <AdPostingRequest/>
         </section>
+    </>
     );
 }
 

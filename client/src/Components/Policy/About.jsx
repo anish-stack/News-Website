@@ -9,7 +9,7 @@ const AboutUs = () => {
 
   const fetchNews = async () => {
     try {
-      const response = await axios.get('https://www.api.aamawaz.com/api/news');
+      const response = await axios.get('https://api.aamawaz.com/api/news');
       const data = response.data;
       const filterSlideData = data.filter((item) => item.ShowAtLatestNews === true);
       setNews(filterSlideData);

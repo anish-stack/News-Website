@@ -21,7 +21,7 @@ const SinglePage = () => {
       }
       setIsLoaded(false); // Start loading state
       try {
-        const response = await axios.get(`https://www.api.aamawaz.com/api/news/category/${query}`);
+        const response = await axios.get(`https://api.aamawaz.com/api/news/category/${query}`);
         setNews(response.data);
       } catch (error) {
         console.error('Error fetching news:', error);
@@ -58,7 +58,7 @@ const SinglePage = () => {
       ) : (
         <div className="CategoryHome-container">
           <div className="CategoryHome-heading">
-            <h3>{query ? `${query} Latest News` : 'News'}</h3>
+            <h3>{query ? `${query}` : 'News'}</h3>
           </div>
           <div className="row">
             {isLoaded && news.length === 0 ? (
@@ -72,7 +72,7 @@ const SinglePage = () => {
                   <div className="category-col-img">
                     <img loading='lazy' onError={(e) => e.target.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8bUqIUkfyesCXuAFw-MFLebEI-5to1ouplw&s"} src={item.NewsHeadImage} alt={item.headline} className="img-fluid" />
                   </div>
-                 
+
                   <div className="category-col-heading">
                     <div className="cate-date">
                       <span className='cate'>{item.newsCategory}</span>

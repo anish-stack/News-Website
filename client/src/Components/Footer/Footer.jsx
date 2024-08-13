@@ -12,7 +12,7 @@ const Footer = () => {
     useEffect(() => {
         const fetchVisitCount = async () => {
             try {
-                const response = await axios.get('https://www.api.aamawaz.com/api/visit-count');
+                const response = await axios.get('https://api.aamawaz.com/api/visit-count');
                 setVisitCount(response.data.count);
             } catch (error) {
                 console.error('Error fetching visit count:', error);
@@ -67,8 +67,8 @@ const Footer = () => {
                                 <h3 className="title text-uppercase font-weight-bold mb-4">Quick Links</h3>
                                 <ul className="list-unstyled">
                                     <li><a href={generateLink('स्वास्थ्य')} className="text-white d-block mb-2">स्वास्थ्य</a></li>
-                                    <li><a href={generateLink('तकनिकी')} className="text-white d-block mb-2">तकनिकी</a></li>
-                                    <li><a href={generateLink('व्यापर')} className="text-white d-block mb-2">व्यापर</a></li>
+                                    <li><a href={generateLink('तकनीकी')} className="text-white d-block mb-2">तकनीकी</a></li>
+                                    <li><a href={generateLink('व्यापार')} className="text-white d-block mb-2">व्यापार</a></li>
                                     <li><a href={generateLink('भ्रष्टाचार')} className="text-white d-block mb-2">भ्रष्टाचार</a></li>
                                     <li><a href={generateLink('दिल्ली-एनसीआर')} className="text-white d-block mb-2">दिल्ली/एनसीआर</a></li>
                                     <li><a href={generateLink('वीडियो')} className="text-white d-block">वीडियो</a></li>

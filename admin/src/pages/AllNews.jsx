@@ -31,7 +31,7 @@ const AllNews = () => {
 
     const fetchNews = async () => {
         try {
-            const response = await axios.get('https://www.api.aamawaz.com/api/news');
+            const response = await axios.get('https://api.aamawaz.com/api/news');
             setNews(response.data);
             setFilteredNews(response.data.reverse()); // Initialize filteredNews with all news
         } catch (error) {
@@ -41,7 +41,7 @@ const AllNews = () => {
 
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`https://www.api.aamawaz.com/api/news/${id}`);
+            await axios.delete(`https://api.aamawaz.com/api/news/${id}`);
             // Update news state after deletion
             toast.success('News Delete Successful')
             const updatedNews = news.filter(item => item._id !== id);

@@ -9,7 +9,7 @@ const LatestNewsCategory = () => {
 
     const fetchNews = async () => {
         try {
-            const response = await axios.get('https://www.api.aamawaz.com/api/news');
+            const response = await axios.get('https://api.aamawaz.com/api/news');
             const data = response.data;
             const filterSlideData = data.filter((item) => item.ShowAtLatestNews === true);
             setNews(filterSlideData);
@@ -28,7 +28,7 @@ const LatestNewsCategory = () => {
         <section className="py-5 bg-light">
             <div className="container-fluid">
                 <div className="text-start mb-4">
-                    <h3 className="font-weight-bold fs-1">Latest News</h3>
+                    <h3 className="font-weight-bold fs-1">मुख्य समाचार </h3>
                     <hr />
                 </div>
                 <div className="row">

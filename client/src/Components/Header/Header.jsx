@@ -20,7 +20,7 @@ const Header = () => {
 
   const fetchHeadlines = async () => {
     try {
-      const response = await axios.get('https://www.api.aamawaz.com/api/news/headlines');
+      const response = await axios.get('https://api.aamawaz.com/api/news/headlines');
       setHeadlines(response.data.headlines);
 
     } catch (error) {
@@ -75,7 +75,7 @@ const Header = () => {
       </div>
       <div className="headlines-container">
         <div className="date-box">
-        <h2>Breaking <span className='text-danger'>News</span> </h2>
+          <h2 className='small-p'>Breaking <span className='text-danger'>News</span> </h2>
         </div>
         <div className="headlines-marquee">
           {headlines.map((item, index) => (
@@ -88,7 +88,7 @@ const Header = () => {
       <div className="header-container">
         <div className="top">
           <div className="contact-detail">
-            <a href="tel:+91 9910150906"><i class="ri-phone-fill"></i> 9910150906</a>
+            {/* <a href="tel:+91 9910150906"><i class="ri-phone-fill"></i> 9910150906</a> */}
           </div>
           <Link to={'/'} className="logo" onClick={handleIsMobDeActive}>
             <img src={logo} alt="" />
@@ -105,7 +105,7 @@ const Header = () => {
             <i class="ri-menu-line"></i>
           </div>
         </div>
-        <div className={`bottom ${isMobActive ? 'mob' : ''}`}>
+        <div className={` z-90 bottom ${isMobActive ? 'mob' : ''}`}>
 
           <Link onClick={handleIsMobDeActive} to={'/'}>होम</Link>
           <Link onClick={handleIsMobDeActive} to={generateLink('देश')} >देश</Link>
